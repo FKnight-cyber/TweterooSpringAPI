@@ -25,14 +25,16 @@ public class TweetController {
     }
 
     @GetMapping(value = "/tweets")
-    public List<Tweet> getTweets(@RequestParam(required = false) Integer page, String username) {
-        if(username != null) {
-            return service.getUserTweets(username);
-        }
+    public List<Tweet> getTweets(@RequestParam(required = false) Integer page) {
         if(page == null){
             return service.getTweets(1);
         }else{
             return service.getTweets(page);
         }
+    }
+
+    @GetMapping(value = "/tweets/{username}")
+    public List<Tweet> getTweets(@PathVariable String username) {
+        return service.getUserTweets(username);
     }
 }
