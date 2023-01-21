@@ -26,7 +26,6 @@ public class TweetController {
 
     @GetMapping(value = "/tweets")
     public List<Tweet> getTweets(@RequestParam(required = false) Integer page, String username) {
-        System.out.println(username);
         if(username != null) {
             return service.getUserTweets(username);
         }
