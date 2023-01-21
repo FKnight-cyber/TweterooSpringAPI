@@ -26,4 +26,8 @@ public class TweetService {
         int filter = ( page - 1) * 5;
         return repository.filterByPage(filter);
     }
+
+    public List<Tweet> getUserTweets(String username) {
+        return repository.findByName(username);
+    }
 }

@@ -24,11 +24,18 @@ public class TestConfig implements CommandLineRunner {
     public void run(String ...args) throws Exception {
 
         User newUser = new User(new UserDTO("fulano", "sem avatar"));
+        User newUser2 = new User(new UserDTO("beltrano", "com avatar"));
 
         userRepository.save(newUser);
+        userRepository.save(newUser2);
 
-        for(int i = 1; i <= 20; i++) {
+        for(int i = 1; i <= 10; i++) {
             Tweet newTweet = new Tweet(new TweetDTO("fulano", "tweet número " + i), userRepository);
+            tweetRepository.save(newTweet);
+        }
+
+        for(int i = 11; i <= 20; i++) {
+            Tweet newTweet = new Tweet(new TweetDTO("beltrano", "tweet número " + i), userRepository);
             tweetRepository.save(newTweet);
         }
     }
