@@ -17,13 +17,10 @@ public class Tweet {
     @Column(nullable = false)
     private String username;
     @Column(nullable = false)
-    private String avatar;
-    @Column(nullable = false)
     private String text;
 
     public Tweet(TweetDTO data) {
-        this.username = data.username();
-        this.avatar = data.avatar();
-        this.text = data.text();
+        this.username = data.getUsername();
+        this.text = data.getText();
     }
 }
