@@ -28,7 +28,7 @@ public class TestConfig implements CommandLineRunner {
         userRepository.save(newUser);
 
         for(int i = 1; i <= 20; i++) {
-            Tweet newTweet = new Tweet(new TweetDTO("fulano", "tweet número " + i));
+            Tweet newTweet = new Tweet(new TweetDTO("fulano", "tweet número " + i), userRepository);
             tweetRepository.save(newTweet);
         }
     }

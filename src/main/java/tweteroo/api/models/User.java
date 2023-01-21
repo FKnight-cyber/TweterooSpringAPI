@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import tweteroo.api.dtos.UserDTO;
 
 @Data
-@Entity
+@Entity(name = "Users")
 @NoArgsConstructor
 @Table(name = "users")
 public class User {

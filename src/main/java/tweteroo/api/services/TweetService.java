@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import tweteroo.api.dtos.TweetDTO;
 import tweteroo.api.models.Tweet;
 import tweteroo.api.repositories.TweetRepository;
+import tweteroo.api.repositories.UserRepository;
 
 import java.util.List;
 
@@ -14,8 +15,11 @@ public class TweetService {
     @Autowired
     TweetRepository repository;
 
+    @Autowired
+    UserRepository userRepository;
+
     public void insert(TweetDTO tweetDTO) {
-        repository.save(new Tweet(tweetDTO));
+        repository.save(new Tweet(tweetDTO, userRepository));
     }
 
     public List<Tweet> getTweets(Integer page) {
