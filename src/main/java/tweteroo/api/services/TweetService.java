@@ -6,6 +6,8 @@ import tweteroo.api.dtos.TweetDTO;
 import tweteroo.api.models.Tweet;
 import tweteroo.api.repositories.TweetRepository;
 
+import java.util.List;
+
 @Service
 public class TweetService {
 
@@ -14,5 +16,10 @@ public class TweetService {
 
     public void insert(TweetDTO tweetDTO) {
         repository.save(new Tweet(tweetDTO));
+    }
+
+    public List<Tweet> getTweets(Integer page) {
+        int filter = ( page - 1) * 5;
+        return repository.filterByPage(filter);
     }
 }
